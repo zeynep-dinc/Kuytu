@@ -34,7 +34,7 @@ class BaslikController extends Controller
      */
     public function create()
     {
-        //
+        return view("baslik.yenibaslikformu");
     }
 
     /**
@@ -45,8 +45,11 @@ class BaslikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $arama=Baslik::Where('bname','=',$request->ara)->get();
+            return view("baslik.bulma")->with('user',$arama);
+    
     }
+
 
     /**
      * Display the specified resource.

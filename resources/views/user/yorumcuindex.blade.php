@@ -24,11 +24,11 @@
         <input class="form-control mr-sm-2" type="text" placeholder="Arar Buluruz" name="ara" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">İzini</button>        
               <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='/yeniaday'" style="border: none;">
-              <img src="https://img.icons8.com/clouds/20/000000/add-user-male.png"/>
-               Üye Ol</button>
+              <img src="https://img.icons8.com/flat_round/20/000000/settings--v1.png"/>
+              </button>
               <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='/uyegiris'" style="border: none;">
-              <img src="https://img.icons8.com/clouds/20/000000/login-rounded-right.png"/>
-              Giriş Yap
+              <img src="https://img.icons8.com/cotton/20/000000/logout-rounded-down--v1.png"/>
+              Çıkış Yap
               </button>
     @foreach($errors->all() as $error)
     <label style="color:red;">{{$error}}</label>
@@ -39,3 +39,5 @@
 </header>
 
   
+
+
