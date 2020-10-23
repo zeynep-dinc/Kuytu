@@ -1,9 +1,10 @@
 @include('user.yorumcuindex');
 <main role="main" style="margin-top:80px;">
   <div class="jumbotron">
-  <form action="#baslikekle" method="post">
+  <form action="/baslikekle" method="post">
     <div class="container">
-    <input type="text" name="newtitle" placeholder="Başlık">
+        <h1><input type="text" id="newtitle" placeholder="Başlık" style="border:none;"></h1>
+        <label id="simName"><script>document.getElementById('simName').innerHTML=document.getElementById('newtitle')</script></label>
   </div>
   <div class="container">
       
@@ -11,12 +12,6 @@
     </form>
   </div>
 </main>
-<div id="baslikekle"> 
-<?php
-$u=$_POST['newtitle'];
-echo $u;
-?>
-</div>
 
       <!-- React'i yükle. -->
       <!-- Not: yayınlama için hazırlanırken,  "development.js" yi "production.min.js" ile değiştirin -->

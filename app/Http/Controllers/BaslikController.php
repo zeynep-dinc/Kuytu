@@ -32,7 +32,7 @@ class BaslikController extends Controller
     }
     public function create()
     {
-        
+
     }
 
     /**
@@ -58,9 +58,16 @@ class BaslikController extends Controller
     public function show(Request $r)
     {
         
-        $baslik=$user=Baslik::join('yorumcus','basliks.uid','=','yorumcus.id')->where('bname','=',$r->bname)->get();
-        
-        return view('baslik.baslik')->with('baslik',$baslik);
+        $baslik=$user=Baslik::join('yorumcus','basliks.uid','=','yorumcus.id')->where('bname','=',$r->ara)->get();
+        if(count($baslik)>0){
+            while($s=@mysql_fetch_array($baslik)){
+                return view('baslik.baslik')->with('baslik',$s);
+            }
+        }
+        else {
+         return  'Malesef içerik bulunamadı! Yarratmak ister misin?';
+        }
+        //return view('baslik.baslik')->with('baslik',$baslik);
     }
 
     /**
