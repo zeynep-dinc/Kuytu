@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 error_reporting(E_ALL);
 use DB;
 use Validator;
+use Auth;
 use App\Models\Yorumcu;
 use App\Http\Requests\GirisRequest;
 use App\Http\Requests\KayitRequest;
@@ -72,9 +73,19 @@ class YorumcuController extends Controller
 
     public function login(GirisRequest $r)
     {
-        $yorumcu=Yorumcu::where('uemail','=',$r->uemail)->where('unick','=',$r->unick)
-        ->where('upass','=',md5($r->upass))->get();
+        if (Auth::attempt(['uemail' => $r->uemail, 'upass' => md5($r->upass)], $remember)) {
+
+            
         return view('user.user')->with('user',$r);
+//            return 'Login oldunuz'; // Gideceğin sayfa...
+           }
+           else
+           {
+            return redirect('login')->with('error','Böyle bir kullanıcı yoktur.');
+           }
+        /*
+        $yorumcu=Yorumcu::where('uemail','=',$r->uemail)->where('unick','=',$r->unick)
+        ->where('upass','=',md5($r->upass))->get();*/
     }
 
     public function show(Request $r)

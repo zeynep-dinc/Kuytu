@@ -22,14 +22,14 @@ Route::post('/kayit',[YorumcuController::class,'create'])->middleware('KayitKont
 //Uye giriş formu
 Route::get('/uyegiris',[YorumcuController::class,'showUyeForm']);
 
-Route::group(['middleware'=>['auth']],function(){
-
+//Yorumcu yetkileri
+//Route::group(['middleware'=>['auth']],function(){
 //Uye girişi
 Route::post('/giris',[YorumcuController::class,'login']);
 //yeni başlık oluşturma formu
 Route::get('/yenibaslik',[BaslikController::class,'baslikformu']);
 
-});
+//});
 
 //Şifre sıfırlama formu
 Route::get('/sifresifirla',[YorumcuController::class,'updateSifre']);
