@@ -2,9 +2,8 @@
 <main role='main'>
 <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3">{{$baslik[0]->bname}}({{count($baslik)}})</h1><br>
+            <h1 class="display-3">{{$bas->bname}}</h1><br>
         </div>
-        @foreach($baslik as $bas)
         @csrf
         <div class="container">
         <label>Türü: {{$bas->btur}} </label><br>
@@ -20,7 +19,6 @@
             <img style="float: right;" src="https://img.icons8.com/bubbles/50/000000/twitter.png"/></a>
           </p>
             </div>
-        @endforeach
         </div>
 
 </main>

@@ -19,9 +19,9 @@
           <a class="nav-link" href="/bugun">Bugün <span class="sr-only">(current)</span></a>
         </li>
       </ul>
-      <form class="form-inline mt-2 mt-md-0" method='post' action='\arabul\'>
+      <form class="form-inline mt-2 mt-md-0" method='get' action='\baslik\'>
       @csrf
-        <input class="form-control mr-sm-2" type="text" placeholder="Arar Buluruz" name="ara" aria-label="Search">
+        <input class="form-control mr-sm-2" type="text" placeholder="Arar Buluruz" name="bname" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">İzini</button>        
               <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href='/yeniaday'" style="border: none;">
               <img src="https://img.icons8.com/clouds/20/000000/add-user-male.png"/>

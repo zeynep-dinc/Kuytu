@@ -4,9 +4,6 @@
 
 <main role="main" style="margin-top:80px;">
   <div class="jumbotron">
-    <div class="container">
-    <h1 class="display-3"> Popüler Haberler </h1>
-  </div>
 @for($i=0;$i<=14;$i++)
 @csrf
   <div class="container">
@@ -17,9 +14,9 @@
             Yaratılma Tarihi:{{$bas[$i]->created_at}}
             <br>
             Güncelleme Tarihi: {{$bas[$i]->updated_at}}
-        <a href="http://www.facebook.com/share.php?u={{ request()->url() }}&amp;title=Başlık Buraya kuytudan bu çıktı">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request()->url() }}&amp;title={{$bas[$i]->id}} {{$bas[$i]->bname}} için {{$bas[$i]->bhakkinda}}">
       	<img style="float: right;" src="https://img.icons8.com/bubbles/50/000000/facebook.png"/></a>
-<a href="http://twitter.com/intent/tweet?status={{$bas[$i]->bname}}+{{ request()->url() }}&amp;title={{$bas[$i]->bname}} için Kuytudan bu çıktı">
+<a href="http://twitter.com/intent/tweet?status={{$bas[$i]->bname}}+{{ request()->url() }}&amp;title={{$bas[$i]->bname}} için Kuytudan bu çıktı: {{$bas[$i]->bhakkinda}}">
       	<img style="float: right;" src="https://img.icons8.com/bubbles/50/000000/twitter.png"/></a>
      </p>
     </div>

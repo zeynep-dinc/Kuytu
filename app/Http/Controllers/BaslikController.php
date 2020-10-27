@@ -8,6 +8,7 @@ use DB;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\Baslik;
+use App\Models\Yorumcu;
 
 class BaslikController extends Controller
 {
@@ -30,17 +31,20 @@ class BaslikController extends Controller
     public function baslikformu(){
         return view("baslik.yenibaslikformu");
     }
-    public function create()
-    {
 
+
+    public function create(Request $r)
+    {
+        $baslik=new Baslik;
+        $baslik->bname=$r->bname;
+        $baslik->bhakkinda=$r->bhakkinda;
+        $baslik->btur=$r->btur;
+        $baslik->uid=100;
+        $baslik->save();
+        return view('baslik.baslk2')->with('bas',$r);
+//        return $bnew->uid;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
             $arama=Baslik::Where('bname','=',$request->ara)->get();
@@ -48,46 +52,22 @@ class BaslikController extends Controller
     
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $r)
+ public function show(Request $r)
     {
-        
-        $baslik=$user=Baslik::join('yorumcus','basliks.uid','=','yorumcus.id')->where('bname','=',$r->ara)->get();
+        $baslik=Baslik::join('yorumcus','basliks.uid','=','yorumcus.id')->where('bname','=',$r->bname)->get();
         if(count($baslik)>0){
-            while($s=@mysql_fetch_array($baslik)){
-                return view('baslik.baslik')->with('baslik',$s);
-            }
+             return view('baslik.baslik')->with('baslik',$baslik);
         }
         else {
-         return  'Malesef içerik bulunamadı! Yarratmak ister misin?';
+         return  view('baslik.yenibaslikformu');
         }
-        //return view('baslik.baslik')->with('baslik',$baslik);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //

@@ -29,6 +29,8 @@ Route::post('/giris',[YorumcuController::class,'login']);
 //yeni başlık oluşturma formu
 Route::get('/yenibaslik',[BaslikController::class,'baslikformu']);
 
+//yeni baslik kaydet
+Route::get('/baslikekle/{bname?}',[BaslikController::class,'create']);
 //});
 
 //Şifre sıfırlama formu
